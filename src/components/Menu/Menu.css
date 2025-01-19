@@ -21,7 +21,7 @@
   color: white;
   cursor: pointer;
   position: fixed;
-  right: 10px;
+  right: 1.3vw;
   top: 1px;
   z-index: 10;
 }
@@ -29,7 +29,7 @@
 .Menu > .btn-close {
   font-size: 48px;
   position: absolute;
-  right: 10px;
+  right: 1.3vw;
   top: 1px;
   cursor: pointer;
   color: #ffffff;
@@ -90,72 +90,55 @@
   animation-duration: 1s;
 }
 
-
-
-.menu-btn:hover::after, .menu-btn:hover::before{
-    transform: scale(1, 1);
+.menu-btn:hover::after,
+.menu-btn:hover::before {
+  transform: scale(1, 1);
 }
-.menu-btn::after, .menu-btn::before{
-    content: '';
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    bottom: 2px;
-    left: 2px;
-    transition: all 0.5s;
+.menu-btn::after,
+.menu-btn::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  transition: all 0.5s;
 }
-.menu-btn::after{
-    border-right: 1px solid rgb(255, 255, 255);
-    border-left: 1px solid rgb(255, 255, 255);
-    transform: scale(1, 0);
+.menu-btn::after {
+  border-right: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid rgb(255, 255, 255);
+  transform: scale(1, 0);
 }
-.menu-btn::before{
-    border-top: 1px solid rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(255, 255, 255);
-    transform: scale(0, 1);
-}
-
-
-.btn-close:hover::after, .btn-close:hover::before{
-    transform: scale(1, 1);
-}
-.btn-close::after, .btn-close::before{
-    content: '';
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    bottom: 5px;
-    left: 5px;
-    transition: all 0.5s;
-}
-.btn-close::after{
-    border-right: 1px solid rgb(255, 255, 255);
-    border-left: 1px solid rgb(255, 255, 255);
-    transform: scale(1, 0);
-}
-.btn-close::before{
-    border-top: 1px solid rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(255, 255, 255);
-    transform: scale(0, 1);
+.menu-btn::before {
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  transform: scale(0, 1);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.btn-close:hover::after,
+.btn-close:hover::before {
+  transform: scale(1, 1);
+}
+.btn-close::after,
+.btn-close::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  transition: all 0.5s;
+}
+.btn-close::after {
+  border-right: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid rgb(255, 255, 255);
+  transform: scale(1, 0);
+}
+.btn-close::before {
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  transform: scale(0, 1);
+}
 
 @keyframes animate {
   0% {
