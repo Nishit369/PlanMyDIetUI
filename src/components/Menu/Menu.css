@@ -17,37 +17,40 @@
 }
 
 .menu-btn {
-  font-size: 48px;
+
   color: white;
   cursor: pointer;
   position: fixed;
   right: 1.3vw;
-  top: 1px;
+  top: 2vh;
   z-index: 10;
 }
 
 .Menu > .btn-close {
-  font-size: 48px;
+  font-size: 58px;
   position: absolute;
   right: 1.3vw;
-  top: 1px;
+  top: 2vh;
   cursor: pointer;
   color: #ffffff;
   z-index: 2;
 }
 
 .menu-btn {
-  font-size: 48px;
+  font-size: 60px;
   color: white;
   cursor: pointer;
+
 }
 
 .Menu > .Menu-items {
+  background-color: rgb(87, 86, 86);
+  padding:10px 15px;
   display: flex;
   justify-content: flex-start;
   gap: 20px;
   position: absolute;
-  top: 0.5vh;
+  top: 2vh;
   left: 70vw;
   z-index: 1;
 }

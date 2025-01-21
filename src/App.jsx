@@ -13,17 +13,18 @@ import {
 import plateModel from '/plate.glb';
 import { useRef, useState, useEffect } from 'react';
 import Menu from './components/Menu/Menu';
-import { GradientTexture, MeshDistortMaterial, Html } from '@react-three/drei';
+import { GradientTexture, MeshDistortMaterial, Html, Text } from '@react-three/drei';
 import { AnimatedText } from './components/AnimatedText';
 import gsap from 'gsap';
 import Plate from './components/Plate';
 import FoodBowl from './components/FoodBowl';
 import LaptopAndMobile from './components/LaptopAndMobile';
+import LoginAndSignup from './components/LoginAndSignup';
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [calories, setCalories] = useState('0 Cal');
+
 
   const hoverSound = new Audio('/hover.mp3');
   const clickSound = new Audio('/click.mp3');
@@ -40,12 +41,12 @@ export default function App() {
     setMenuOpen(!menuOpen);
   };
 
-  const handleHover = (calories) => {
-    setCalories(calories);
-  };
 
   return (
     <>
+    <div className='logo-container'>
+      <img src='/logo.png' alt='logo' className='logo'  />
+    </div>
       <span
         className="material-icons menu-btn"
         onClick={() => {
@@ -58,6 +59,7 @@ export default function App() {
       >
         menu
       </span>
+      
       <Menu
         isOpen={isOpen}
         onChange={setIsOpen}
@@ -83,7 +85,7 @@ export default function App() {
             shadow-camera-top={10}
             shadow-camera-bottom={-10}
           />
-          <ScrollControls pages={3}>
+          <ScrollControls pages={3} damping={0.1}>
             <Scroll>
               <>
                 <mesh
@@ -92,14 +94,14 @@ export default function App() {
                   receiveShadow
                   rotation={[0, 0, 0]}
                 >
-                  {/* <planeGeometry args={[1, 1, 32, 32]} />
+                  <planeGeometry args={[1, 1.5, 32, 32]} />
                   <MeshDistortMaterial speed={0}>
                     <GradientTexture
                       stops={[0, 0.8, 1]}
-                      colors={[]}
+                      colors={["#333",""]}
                       size={100}
                     />
-                  </MeshDistortMaterial> */}
+                  </MeshDistortMaterial>
                 </mesh>
                 <Float speed={3} rotationIntensity={0} floatIntensity={3}>
                   <PresentationControls
@@ -122,41 +124,63 @@ export default function App() {
               </>
 
               <>
-              <PresentationControls>
-              <LaptopAndMobile
-          laptopModelPath="/laptop.glb"
-          mobileModelPath="/phone.glb"
-          calories={calories}
-        />
-        </PresentationControls>
-                <mesh
+              <mesh
                   scale={[20, 5, 2]}
-                  position={[-1, -3, -2]}
+                  position={[-1, -6.5, -2]}
                   receiveShadow
                   rotation={[0, 0, 0]}
                 >
+                  <planeGeometry args={[1, 1.5, 32, 32]} />
+                  <MeshDistortMaterial speed={0}>
+                    <GradientTexture
+                      stops={[0, 0.8, 1]}
+                      colors={["#333",""]}
+                      size={100}
+                    />
+                  </MeshDistortMaterial>
                 </mesh>
+              <Float speed={2} rotationIntensity={0} floatIntensity={2}>
+              <LaptopAndMobile
+          laptopModelPath="/laptop.glb"
+          mobileModelPath="/phone.glb"
+        />
+        </Float>
+                <Text
+                  font="/font2.ttf"
+                  fontSize={0.18}
+                  color="white"
+                  anchorX="center"
+                  anchorY="middle"
+                  position={[-2.2, -6, -1]}>
+                    Your personalized diet assistant
+                  </Text>
+
+                  <Text
+                  font="/font2.ttf"
+                  fontSize={0.2}
+                  color="rgba(255, 255, 255, 0.14)"
+                  anchorX="center"
+                  anchorY="middle"
+                  position={[-2.8, -6.45, -1]}>
+                    {"Start Your Journey"}
+                  </Text>
+
+
+                  <Text
+                  font="/font2.ttf"
+                  fontSize={0.25}
+                  color="rgb(21, 255, 0)"
+                  anchorX="center"
+                  anchorY="middle"
+                  position={[-1.2, -6.45, -1]}>
+                    {"Today!!"}
+                  </Text>
+                  
+
+                <LoginAndSignup/>
                 
                 {/* <OrbitControls/> */}
-                <FoodBowl
-                  position={[0.5, -3, -1]}
-                  image="/food1.png"
-                  calories="150 Cal"
-                  onHover={handleHover}
-                />
-                <FoodBowl
-                  position={[1.5, -3, -1]}
-                  image="/food2.png"
-                  calories="200 Cal"
-                  onHover={handleHover
-                  }
-                />
-                <FoodBowl
-                  position={[2.5, -3, -1]}
-                  image="/food3.png"
-                  calories="300 Cal"
-                  onHover={handleHover}
-                />
+                
                 
               </>
 

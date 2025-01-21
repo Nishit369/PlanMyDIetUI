@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { Text } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+gsap.registerPlugin(ScrollTrigger);
 export const AnimatedText = () => {
   const textRef1 = useRef();
   const textRef2 = useRef();
@@ -16,21 +18,21 @@ export const AnimatedText = () => {
     });
     gsap.to(textRef2.current.position, {
       x: 0.85,
-      y: 0.75,
+      y: 0.5,
       duration: 3,
       stagger: 12,
       delay: 2,
     });
     gsap.to(textRef3.current.position, {
       x: 0.85,
-      y: 0.5,
+      y: 0.1,
       duration: 3,
       stagger: 12,
       delay: 3,
     });
     gsap.to(textRef4.current.position, {
       x: 0.78,
-      y: 0.25,
+      y: -0.3,
       duration: 3,
       stagger: 12,
       delay: 4,
@@ -46,7 +48,7 @@ export const AnimatedText = () => {
         color="white"
         anchorX="center"
         anchorY="middle"
-        position={[5, 1.25, 1]}
+        position={[5, 1.1, 1]}
       >
         {'PlanMyDiet'}
       </Text>
@@ -83,6 +85,8 @@ export const AnimatedText = () => {
       >
         {'to a healthier you.'}
       </Text>
+
+      
     </>
   );
 };

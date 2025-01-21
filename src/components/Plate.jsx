@@ -12,7 +12,7 @@ export default function Plate(props) {
 
   useEffect(() => {
     gsap.to(plateRef.current.position, {
-      x: -1.75,
+      x: -1.9,
       duration: 5,
       ease: 'power4.inOut',
     });
@@ -26,7 +26,7 @@ export default function Plate(props) {
 
   useFrame(() => {
     if (plateRef.current) {
-      plateRef.current.rotation.y += 0.01;
+      plateRef.current.rotation.y += 0.0025;
     }
   });
 

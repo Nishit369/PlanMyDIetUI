@@ -24,3 +24,82 @@ body,
 canvas {
   touch-action: none;
 }
+
+ .login-buttons {
+  display: flex; 
+  gap: 5px;
+  padding: 1px 2px;
+  position: fixed; 
+  top: 12vh; 
+  left:-8vw; 
+
+} 
+ @font-face {
+  font-family: 'Custom'; 
+  src: url('./font2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.signup-button {
+  display: inline-block;
+  background-color: #2c7be5; 
+  color: white; 
+  border: none; 
+  padding: 2px 5px; 
+  font-size: 0.5rem; 
+  font-family: 'Custom','sans-serif';
+  cursor: pointer; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, transform 0.3s; 
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+.login-button {
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  padding: 2px 5px; 
+  font-size: 0.5rem; 
+  font-family: 'Custom','sans-serif';
+  cursor: pointer; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, transform 0.3s; 
+  z-index: 9999;
+  white-space: nowrap;
+}
+ 
+
+.login-button:hover {
+  background-color: #71d776; 
+  transform: scale(1.05); 
+}
+
+.login-button:active {
+  background-color: #66c26b; 
+}
+
+.signup-button:hover {
+  background-color: #63a3fd; 
+  transform: scale(1.05); 
+}
+
+.signup-button:active {
+  background-color: #2c7be9; 
+}  
+
+.logo-container {
+  position: fixed; 
+  top: -3vh; 
+  left: -2vw; 
+  z-index: 9999; 
+}
+
+.logo {
+  position : fixed;
+  cursor: pointer;
+  width: 10vw;
+  height: auto; 
+  z-index: 99999;
+}
