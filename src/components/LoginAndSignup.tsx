@@ -1,16 +1,19 @@
 import React from 'react';
 import { Html } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
-import { WebGLRenderer } from 'three';
 
-const LoginAndSignup = () => {
+const LoginAndSignup: React.FC = () => {
   const { gl } = useThree();
 
   return (
-    <Html transform portal={{ current: gl.domElement.parentNode as HTMLElement }} position={[-0.3, -3.5, -1.4]}>
+    <Html transform portal={{ current: gl.domElement.parentNode }} position={[-2.25,-6,-1]} scale={1}>
       <div className='login-buttons'>
-        <button className='signup-button'>Create an account</button>
-        <button className='login-button'>Login</button>
+        <a href='/dashboard' className='signup-button'>
+          Create an account
+        </a>
+        <a href='/dashboard' className='login-button'>
+          Login
+        </a>
       </div>
     </Html>
   );

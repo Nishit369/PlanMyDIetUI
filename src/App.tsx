@@ -8,6 +8,7 @@ import {
   GradientTexture,
   Environment,
   Text,
+  OrbitControls,
 } from '@react-three/drei';
 import { useState, useRef, useEffect } from 'react';
 import Menu from './components/Menu/Menu';
@@ -247,10 +248,11 @@ export default function App() {
               <Footer />
             </Scroll>
           </ScrollControls>
-
+          {/* <OrbitControls/> */}
           <Environment preset="city" />
         </Canvas>
         <LoadingScreen started={start} onStarted={handleStart} />
+        
       </div>
     </>
   );
