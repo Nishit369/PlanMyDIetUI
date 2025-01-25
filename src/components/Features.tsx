@@ -4,8 +4,8 @@ const Features = () => {
   return (
     <>
     <Text
-    font="/font2.ttf"
-    fontSize={0.15}
+    font="/font3.ttf"
+    fontSize={0.17}
     fontWeight={700}
     color="#E11D48"
     anchorX="center"
@@ -31,8 +31,8 @@ const Features = () => {
 
     </Text>
     <Text
-    font="/font2.ttf"
-    fontSize={0.15}
+    font="/font3.ttf"
+    fontSize={0.17}
     fontWeight={700}
     color="#E11D48"
     anchorX="center"
@@ -54,8 +54,8 @@ const Features = () => {
     {"The sharing meal plans feature\nallows users to easily share their\npersonalized or curated meal plans\nwith friends,family,or community groups. "}
     </Text>
     <Text
-    font="/font2.ttf"
-    fontSize={0.15}
+    font="/font3.ttf"
+    fontSize={0.17}
     fontWeight={700}
     color="#E11D48"
     anchorX="center"
@@ -77,8 +77,8 @@ const Features = () => {
 {"Automatically generates a list of\ningredients based on the meal plan,\nhelping users organize their grocery\nshopping by listing all required\nitems for the week."}
     </Text>
     <Text
-    font="/font2.ttf"
-    fontSize={0.15}
+    font="/font3.ttf"
+    fontSize={0.17}
     fontWeight={700}
     color="#E11D48"
     anchorX="center"
@@ -100,8 +100,8 @@ const Features = () => {
 {"Compete with yourself or your\nfriends to stay motivated and\nachieve your wellness goals together."}
     </Text>
     <Text
-    font="/font2.ttf"
-    fontSize={0.15}
+    font="/font3.ttf"
+    fontSize={0.17}
     fontWeight={700}
     color="#E11D48"
     anchorX="center"
@@ -124,8 +124,8 @@ const Features = () => {
     </Text>
 
     <Text
-    font="/font2.ttf"
-    fontSize={0.15}
+    font="/font3.ttf"
+    fontSize={0.17}
     fontWeight={700}
     color="#E11D48"
     anchorX="center"
