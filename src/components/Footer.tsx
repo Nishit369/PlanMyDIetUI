@@ -1,27 +1,25 @@
 /* eslint-disable react/no-unknown-property */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, MeshReflectorMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 
-const Footer = () => {
-  
-
+const Footer: React.FC = () => {
   function Letters() {
-    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [gradientColor, setGradientColor] = useState(new THREE.Color(""));
-    const [startTime, setStartTime] = useState(Date.now()); 
+    const [startTime, setStartTime] = useState<number>(Date.now());
 
-    const interpolateColor = (color1, color2, factor) => {
-      return color1.lerp(color2, factor);
+    const interpolateColor = (color1: THREE.Color, color2: THREE.Color, factor: number) => {
+      return color1.clone().lerp(color2, factor);
     };
 
-    const colors = ["hsl(345, 97.50%, 53.70%)","hsl(0, 100.00%, 49.80%)"];
-    const transitionDuration = 5000; 
+    const colors = ["hsl(345, 97.50%, 53.70%)", "hsl(0, 100.00%, 49.80%)"];
+    const transitionDuration = 5000;
 
     useFrame(() => {
       const elapsedTime = Date.now() - startTime;
-      const factor = (elapsedTime % transitionDuration) / transitionDuration ;
+      const factor = (elapsedTime % transitionDuration) / transitionDuration;
 
       const index = Math.floor((elapsedTime / transitionDuration) * colors.length) % colors.length;
       const fromColor = new THREE.Color(colors[index]);
@@ -52,7 +50,7 @@ const Footer = () => {
             key={index}
             font="/font3.ttf"
             fontSize={1}
-            color={gradientColor.getStyle()} 
+            color={gradientColor.getStyle()}
             position={[
               letter.position[0],
               hoveredIndex === index ? letter.position[1] + 0.1 : letter.position[1],
@@ -84,8 +82,7 @@ const Footer = () => {
           minDepthThreshold={0.4}
           maxDepthThreshold={1.4}
           color="#050505"
-          metalness={0.5}
-        />
+          metalness={0.5} mirror={0}        />
       </mesh>
     );
   }

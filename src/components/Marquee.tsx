@@ -1,15 +1,23 @@
 import { Text } from '@react-three/drei';
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { Group, Mesh } from 'three';
 
-const Marquee = ({ text, fontSize = 0.5, color = 'white', speed = 0.03 }) => {
-  const textRef = useRef();
+interface MarqueeProps {
+  text: string;
+  fontSize?: number;
+  color?: string;
+  speed?: number;
+}
+
+const Marquee = ({ text, fontSize = 0.5, color = 'white', speed = 0.025 }: MarqueeProps) => {
+  const textRef = useRef<Mesh>(null);
 
   useFrame(() => {
     if (textRef.current) {
       textRef.current.position.x -= speed;
 
-      const textWidth = textRef.current.geometry.boundingBox.max.x * 1.1;
+      const textWidth = textRef.current.geometry.boundingBox ? textRef.current.geometry.boundingBox.max.x * 1.1 : 0;
 
       if (textRef.current.position.x < -textWidth) {
         textRef.current.position.x = 5;

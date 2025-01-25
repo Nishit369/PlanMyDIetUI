@@ -1,42 +1,55 @@
 import React, { useRef, useEffect } from 'react';
 import { Text } from '@react-three/drei';
 import gsap from 'gsap';
+import { Mesh } from 'three';
 
-export const AnimatedText = () => {
-  const textRef1 = useRef();
-  const textRef2 = useRef();
-  const textRef3 = useRef();
-  const textRef4 = useRef();
-  const textRefs = useRef([]);
+export const AnimatedText: React.FC = () => {
+  // Define types for refs
+  const textRef2 = useRef<Mesh | null>(null);
+  const textRef3 = useRef<Mesh | null>(null);
+  const textRef4 = useRef<Mesh | null>(null);
+  const textRefs = useRef<(Mesh | null)[]>([]);
 
   useEffect(() => {
+    // Animate each text in the array
     textRefs.current.forEach((text, i) => {
-      gsap.to(text.position, {
-        y: 1.2,
-        duration: 1,
-        delay: i * 0.2,
-        ease: "power2.inOut",
-      });
+      if (text) {
+        gsap.to(text.position, {
+          y: 1.2,
+          duration: 1,
+          delay: i * 0.2,
+          ease: "power2.inOut",
+        });
+      }
     });
 
-    gsap.to(textRef2.current.position, {
-      x: 1.25,
-      y: 0.6,
-      duration: 1.5,
-      delay: 2,
-    });
-    gsap.to(textRef3.current.position, {
-      x: 1.1,
-      y: 0.2,
-      duration: 1.5,
-      delay: 3,
-    });
-    gsap.to(textRef4.current.position, {
-      x: 1.05,
-      y: -0.2,
-      duration: 1.5,
-      delay: 4,
-    });
+    // Animate individual refs
+    if (textRef2.current) {
+      gsap.to(textRef2.current.position, {
+        x: 1.25,
+        y: 0.6,
+        duration: 1.5,
+        delay: 2,
+      });
+    }
+
+    if (textRef3.current) {
+      gsap.to(textRef3.current.position, {
+        x: 1.1,
+        y: 0.2,
+        duration: 1.5,
+        delay: 3,
+      });
+    }
+
+    if (textRef4.current) {
+      gsap.to(textRef4.current.position, {
+        x: 1.05,
+        y: -0.2,
+        duration: 1.5,
+        delay: 4,
+      });
+    }
   }, []);
 
   return (
@@ -108,7 +121,6 @@ export const AnimatedText = () => {
         {"iet"}
       </Text>
 
-    
       <Text
         ref={textRef2}
         font="/font2.ttf"

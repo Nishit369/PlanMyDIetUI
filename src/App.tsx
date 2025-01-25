@@ -28,7 +28,7 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [start, setStart] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const hoverSound = new Audio('/hover.mp3');
   const clickSound = new Audio('/click.mp3');
 
@@ -37,7 +37,7 @@ export default function App() {
     audioRef.current.volume = 0.3;
     audioRef.current.addEventListener('error', (e) => {
       console.error('Error loading audio:', e);
-    },[]);
+    });
 
     return () => {
       if (audioRef.current) {
@@ -53,9 +53,9 @@ export default function App() {
 
   const handleAudioToggle = () => {
     if (audioPlaying) {
-      audioRef.current.pause();
+      audioRef.current?.pause();
     } else {
-      audioRef.current.play().catch((error) => {
+      audioRef.current?.play().catch((error) => {
         console.error('Error playing audio:', error);
       });
     }
@@ -65,7 +65,7 @@ export default function App() {
   const handleStart = () => {
     setStart(true);
     if (!audioPlaying) {
-      audioRef.current.play().catch((error) => {
+      audioRef.current?.play().catch((error) => {
         console.error('Error playing audio:', error);
       });
       setAudioPlaying(true);
@@ -126,7 +126,6 @@ export default function App() {
 
           <ScrollControls pages={6.5} damping={0.1}>
             <Scroll>
-              {/* Section 1 */}
               <mesh
                 scale={[20, 5, 2]}
                 position={[-1, 1, -2]}
@@ -168,7 +167,6 @@ export default function App() {
                 {start && <AnimatedText />}
               </Suspense>
 
-              {/* Section 2 */}
               <mesh
                 scale={[20, 5, 2]}
                 position={[-1, -6.5, -2.01]}
@@ -226,7 +224,6 @@ export default function App() {
               </Text>
               <LoginAndSignup />
 
-              {/* Section 3 */}
               <mesh
                 scale={[10, 3, 1]}
                 position={[-1, -17.5, -1.99]}

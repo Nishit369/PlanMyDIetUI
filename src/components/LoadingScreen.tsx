@@ -1,11 +1,16 @@
 import { useProgress } from "@react-three/drei";
 
-export const LoadingScreen = ({ started, onStarted }) => {
+interface LoadingScreenProps {
+  started: boolean;
+  onStarted: () => void;
+}
+
+export const LoadingScreen = ({ started, onStarted }: LoadingScreenProps) => {
   const { progress } = useProgress();
 
   const handleButtonClick = () => {
     if (progress === 100) {
-      onStarted(); // Call the onStarted function only when progress is 100%
+      onStarted();
     }
   };
 

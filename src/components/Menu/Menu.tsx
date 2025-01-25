@@ -1,16 +1,27 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { items } from './Menuitems';
-const Menu = ({ isOpen, onChange, menuOpen, menuChange }) => {
-  const hoverSound = new Audio('/hover.mp3');
-  const clickSound = new Audio('/click.mp3');
+
+interface MenuProps {
+  isOpen: boolean;
+  onChange: (value: boolean) => void;
+  menuOpen: boolean;
+  menuChange: (value: boolean) => void;
+}
+
+const Menu: React.FC<MenuProps> = ({ isOpen, onChange, menuOpen, menuChange }) => {
+  const hoverSound = React.useMemo(() => new Audio('/hover.mp3'), []);
+  const clickSound = React.useMemo(() => new Audio('/click.mp3'), []);
+
   function handleHoverSound() {
+    hoverSound.volume = 0.6;
     hoverSound.play();
   }
+
   function handleClickSound() {
+    clickSound.volume = 0.6;
     clickSound.play();
   }
-  hoverSound.volume = 0.6;
+
   return (
     <div className={`Menu ${isOpen && 'open'}`}>
       <span
@@ -32,7 +43,7 @@ const Menu = ({ isOpen, onChange, menuOpen, menuChange }) => {
             onClick={handleClickSound}
             onMouseOver={handleHoverSound}
           >
-            <span className="material-icons" style={{ fontSize: '26px' }}>
+            <span className="material-icons" style={{ fontSize: '27px' }}>
               {item.icon}
             </span>
             {item.itemText}

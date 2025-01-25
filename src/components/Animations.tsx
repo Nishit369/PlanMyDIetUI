@@ -10,7 +10,7 @@ import anim6 from "../assets/animations/anim6.json";
 import { useThree } from '@react-three/fiber';
 import { Html } from "@react-three/drei";
 
-const Animations = () => {
+const Animations: React.FC = () => {
     const { gl } = useThree();
 
     return (
@@ -19,10 +19,10 @@ const Animations = () => {
                 transform 
                 portal={{ current: gl.domElement.parentNode }} 
                 position={[-2, -11.25, -1.4]} 
-                style={{ pointerEvents: 'none' }} // Prevent interaction
+                style={{ pointerEvents: 'none' }}
             >
-                <div className='anim1' style={{ pointerEvents: 'none' }}> {/* Ensure child also ignores events */}
-                    <Lottie animationData={anim1} style={{ width: "5vw", height: "5vh" , pointerEvents:"none"}} />
+                <div className='anim1' style={{ pointerEvents: 'none' }}>
+                    <Lottie animationData={anim1} style={{ width: "5vw", height: "5vh", pointerEvents: "none" }} />
                 </div>
             </Html>
 

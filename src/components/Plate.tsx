@@ -5,19 +5,22 @@ import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import gsap from 'gsap';
 import plateModel from '/plate.glb';
+import * as THREE from 'three';
 
-export default function Plate(props) {
-  const plateRef = useRef();
+export default function Plate(props: any) {
+  const plateRef = useRef<THREE.Object3D>(null);
   const { scene } = useGLTF(plateModel);
 
   useEffect(() => {
-    gsap.to(plateRef.current.position, {
-      x: -1.9,
-      duration: 5,
-      ease: 'power4.inOut',
-    });
+    if (plateRef.current) {
+      gsap.to(plateRef.current.position, {
+        x: -1.9,
+        duration: 5,
+        ease: 'power4.inOut',
+      });
+    }
     scene.traverse((node) => {
-      if (node.isMesh) {
+      if ((node as THREE.Mesh).isMesh) {
         node.castShadow = true;
         node.receiveShadow = true;
       }
