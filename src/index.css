@@ -357,7 +357,7 @@ canvas {
 
 .loadingScreen__board {
   padding: 64px;
-  background-color: rgb(51, 55, 53);
+  background-color: rgb(30, 30, 30);
   border-radius: 24px;
   text-align: center;
   border: groove 6px rgba(251, 19, 69, 0.75);
@@ -373,7 +373,7 @@ canvas {
 .loadingScreen__description {
   font-size: 2.5rem;
   color: rgba(250, 246, 246, 0.683);
-  font-family: "Custom1";
+  font-family: "Custom";
   margin: 0;
   margin-bottom: 48px;
 }
@@ -391,8 +391,10 @@ canvas {
 }
 
 .loadingScreen__button:hover {
-  background-color: rgba(255, 229, 229, 0.367);
+  background-color: rgba(181, 171, 171, 0.367);
   cursor: pointer;
+  transform: scale(1.05);
+  border: #e11d48 3px solid;
 }
 
 .loadingScreen__button:disabled {
