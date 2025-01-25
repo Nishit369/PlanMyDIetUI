@@ -15,7 +15,7 @@ body,
 }
 
 .canvas-container {
-  background: transparent;
+  background: #333;
   font-family: inter;
   background-color: #333;
   position: relative;
@@ -24,23 +24,257 @@ body,
 canvas {
   touch-action: none;
 }
+.Menu {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: transparent;
+  transform: translateY(-100%);
+  transition: all 0.45s;
+}
+
+.Menu.open {
+  transform: translateY(0);
+}
+
+.menu-btn {
+
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  right: 1.3vw;
+  top: 2vh;
+  z-index: 10;
+}
+.sound-btn {
+
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  right: 1.3vw;
+  top: 8vh;
+  z-index: 10;
+  font-size: 48px;
+}
+
+.Menu > .btn-close {
+  font-size: 48px;
+  position: absolute;
+  right: 1.3vw;
+  top: 2vh;
+  cursor: pointer;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.menu-btn {
+  font-size: 48px;
+  color: white;
+  cursor: pointer;
+
+}
+
+.Menu > .Menu-items {
+  background-color: inherit;
+  padding:10px 15px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  position: absolute;
+  top: 2vh;
+  left: 70vw;
+  z-index: 1;
+}
+
+.Menu > .Menu-items > a {
+  display: inline-flex;
+  gap: 8px;
+  color: white;
+  font-size: 26px;
+  text-decoration: none;
+  position: relative;
+}
+
+.Menu > .Menu-items > a::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  transform: scaleX(0);
+  transition: all 0.45s;
+}
+
+.Menu > .Menu-items > a:hover::after {
+  transform: scaleX(1);
+}
+
+.Menu.open .Menu-items > a:nth-child(1) {
+  animation: animate ease-in-out;
+  animation-duration: 0.7s;
+}
+.Menu.open .Menu-items > a:nth-child(2) {
+  animation: animate ease-in-out;
+  animation-duration: 0.85s;
+}
+.Menu.open .Menu-items > a:nth-child(3) {
+  animation: animate ease-in-out;
+  animation-duration: 1s;
+}
+
+.menu-btn:hover::after,
+.menu-btn:hover::before {
+  transform: scale(1, 1);
+}
+.menu-btn::after,
+.menu-btn::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  transition: all 0.5s;
+}
+.menu-btn::after {
+  border-right: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid rgb(255, 255, 255);
+  transform: scale(1, 0);
+}
+.menu-btn::before {
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  transform: scale(0, 1);
+}
+.sound-btn:hover::after,
+.sound-btn:hover::before {
+  transform: scale(1, 1);
+}
+
+.sound-btn::after,
+.sound-btn::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  transition: all 0.5s;
+}
+
+.sound-btn::after {
+  border-right: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid rgb(255, 255, 255);
+  transform: scale(1, 0);
+}
+
+.sound-btn::before {
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  transform: scale(0, 1);
+}
+
+.btn-close:hover::after,
+.btn-close:hover::before {
+  transform: scale(1, 1);
+}
+.btn-close::after,
+.btn-close::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  transition: all 0.5s;
+}
+.btn-close::after {
+  border-right: 1px solid rgb(255, 255, 255);
+  border-left: 1px solid rgb(255, 255, 255);
+  transform: scale(1, 0);
+}
+.btn-close::before {
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  transform: scale(0, 1);
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0%;
+    transform: translateY(-90px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .Menu > .Menu-items {
+    top: 2vh;
+    left: 5vw;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .Menu > .btn-close {
+    font-size: 36px;
+    right: 5px;
+    top: 2vh;
+  }
+
+  .Menu > .Menu-items > a {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Menu > .Menu-items {
+    left: 3vw;
+  }
+
+  .Menu > .btn-close {
+    font-size: 32px;
+    right: 5px;
+    top: 2vh;
+  }
+
+  .Menu > .Menu-items > a {
+    font-size: 24px;
+  }
+}
+
 
  .login-buttons {
   display: flex; 
   gap: 5px;
   padding: 1px 2px;
   position: fixed; 
-  top: 12vh; 
+  top: 9vh; 
   left:-8vw; 
 
 } 
  @font-face {
-  font-family: 'Custom'; 
+  font-family: 'Custom1'; 
   src: url('./font2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Custom2'; 
+  src: url('./font3.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 .signup-button {
   display: inline-block;
   background-color: #2c7be5; 
@@ -48,7 +282,7 @@ canvas {
   border: none; 
   padding: 2px 5px; 
   font-size: 0.5rem; 
-  font-family: 'Custom','sans-serif';
+  font-family: 'Custom1','sans-serif';
   cursor: pointer; 
   border-radius: 5px; 
   transition: background-color 0.3s, transform 0.3s; 
@@ -62,7 +296,7 @@ canvas {
   border: none; 
   padding: 2px 5px; 
   font-size: 0.5rem; 
-  font-family: 'Custom','sans-serif';
+  font-family: 'Custom1','sans-serif';
   cursor: pointer; 
   border-radius: 5px; 
   transition: background-color 0.3s, transform 0.3s; 
@@ -90,16 +324,106 @@ canvas {
 }  
 
 .logo-container {
-  position: fixed; 
-  top: -3vh; 
-  left: -2vw; 
-  z-index: 9999; 
+  position: fixed;
+  top: -3vh;
+  left: -2vw;
+  z-index: 9999;
+
 }
 
 .logo {
-  position : fixed;
+  transform: translate(0,0);
+  position: fixed;
   cursor: pointer;
-  width: 10vw;
-  height: auto; 
+  width: 180px;
+  height: auto;
   z-index: 99999;
+}
+
+
+.loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: inherit;
+  background-image: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 8s;
+  z-index: 1;
+  font-family: "Custom2", serif;
+}
+
+.loadingScreen__board {
+  padding: 64px;
+  background-color: rgb(51, 55, 53);
+  border-radius: 24px;
+  text-align: center;
+  border: groove 6px rgba(251, 19, 69, 0.75);
+  transition: opacity 1s;
+}
+
+.loadingScreen__title {
+  font-size: 4rem;
+  color: rgba(250, 246, 246, 0.683);
+  margin: 0;
+  margin-bottom: 48px;
+}
+.loadingScreen__description {
+  font-size: 2.5rem;
+  color: rgba(250, 246, 246, 0.683);
+  font-family: "Custom1";
+  margin: 0;
+  margin-bottom: 48px;
+}
+
+.loadingScreen__button {
+  padding: 15px 32px;
+  background-color: rgba(255, 87, 87, 0.303);
+  color: rgb(176, 168, 168);
+  border: none;
+  font-weight: bold;
+  font-size: 2.5rem;
+  border-radius: 8px;
+  transition: background-color 0.4s;
+  font-family: "Custom";
+}
+
+.loadingScreen__button:hover {
+  background-color: rgba(255, 229, 229, 0.367);
+  cursor: pointer;
+}
+
+.loadingScreen__button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.loadingScreen__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+}
+
+.loadingScreen__progress__value {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+  transition: width 0.4s;
+}
+
+.loadingScreen--started {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loadingScreen--started .loadingScreen__board {
+  opacity: 0;
 }

@@ -1,52 +1,86 @@
 /* eslint-disable react/no-unknown-property */
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import {
-  useGLTF,
   PresentationControls,
-  Environment,
   ScrollControls,
   Scroll,
-  useScroll,
   Float,
-  OrbitControls,
+  GradientTexture,
+  Environment,
+  Text,
 } from '@react-three/drei';
-import plateModel from '/plate.glb';
-import { useRef, useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Menu from './components/Menu/Menu';
-import { GradientTexture, MeshDistortMaterial, Html, Text } from '@react-three/drei';
-import { AnimatedText } from './components/AnimatedText';
-import gsap from 'gsap';
 import Plate from './components/Plate';
-import FoodBowl from './components/FoodBowl';
 import LaptopAndMobile from './components/LaptopAndMobile';
 import LoginAndSignup from './components/LoginAndSignup';
+import { AnimatedText } from './components/AnimatedText';
+import { AnimatedText2 } from './components/AnimatedText2';
+import Features from './components/Features';
+import Animations from './components/Animations';
+import Footer from './components/Footer';
+import Marquee from './components/Marquee';
+import { Suspense } from 'react';
+import { LoadingScreen } from './components/LoadingScreen';
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-
+  const [start, setStart] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const audioRef = useRef(null);
   const hoverSound = new Audio('/hover.mp3');
   const clickSound = new Audio('/click.mp3');
-  hoverSound.volume = 0.6;
 
-  function handleHoverSound() {
-    hoverSound.play();
-  }
-  function handleClickSound() {
-    clickSound.play();
-  }
+  useEffect(() => {
+    audioRef.current = new Audio("/music.mp3");
+    audioRef.current.volume = 0.3;
+    audioRef.current.addEventListener('error', (e) => {
+      console.error('Error loading audio:', e);
+    },[]);
 
-  const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.removeEventListener('error', () => {});
+      }
+    };
+  }, []);
+
+  const handleHoverSound = () => hoverSound.play();
+  const handleClickSound = () => clickSound.play();
+  const handleMenuToggle = () => setMenuOpen(!menuOpen);
+
+  const handleAudioToggle = () => {
+    if (audioPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch((error) => {
+        console.error('Error playing audio:', error);
+      });
+    }
+    setAudioPlaying(!audioPlaying);
   };
 
+  const handleStart = () => {
+    setStart(true);
+    if (!audioPlaying) {
+      audioRef.current.play().catch((error) => {
+        console.error('Error playing audio:', error);
+      });
+      setAudioPlaying(true);
+    }
+  };
+
+  const marqueeText =
+    'PlanMyDiet | Healthy Living | Personal Nutrition | Fitness Goals | Balanced Meals | Wellness Tips | Protein Rich Diet | Vegan Options | Keto Friendly | Personalized Plans | Calorie Tracking | Meal Prep Ideas | Healthy Recipes | Nutritional Guidance | Weight Loss Tips | Mindful Eating | Wellness Programs | Sustainable Diet | Hydration Goals | Lifestyle Changes | Gut Health | Mental Wellness | Exercise Tips | Diet Trends | Food Facts';
 
   return (
     <>
-    <div className='logo-container'>
-      <img src='/logo.png' alt='logo' className='logo'  />
-    </div>
+      <div className="logo-container">
+        <img src="/logo.png" alt="logo" className="logo" />
+      </div>
+
       <span
         className="material-icons menu-btn"
         onClick={() => {
@@ -59,20 +93,24 @@ export default function App() {
       >
         menu
       </span>
-      
+      <span className="material-icons sound-btn" onClick={handleAudioToggle}>
+        {audioPlaying ? 'volume_up' : 'volume_off'}
+      </span>
+
       <Menu
         isOpen={isOpen}
         onChange={setIsOpen}
         menuOpen={menuOpen}
         menuChange={setMenuOpen}
       />
+
       <div className="canvas-container">
         <Canvas
           style={{ height: '100vh', width: '100vw', touchAction: 'none' }}
           shadows
           camera={{ position: [0, 0, 10], fov: 25 }}
         >
-          <ambientLight intensity={0.5} />
+          <ambientLight intensity={2} />
           <directionalLight
             position={[0, 10, 0]}
             intensity={1}
@@ -85,127 +123,137 @@ export default function App() {
             shadow-camera-top={10}
             shadow-camera-bottom={-10}
           />
-          <ScrollControls pages={3} damping={0.1}>
+
+          <ScrollControls pages={6.5} damping={0.1}>
             <Scroll>
-              <>
-                <mesh
-                  scale={[20, 5, 2]}
-                  position={[-1, 1, -2]}
-                  receiveShadow
-                  rotation={[0, 0, 0]}
-                >
-                  <planeGeometry args={[1, 1.5, 32, 32]} />
-                  <MeshDistortMaterial speed={0}>
-                    <GradientTexture
-                      stops={[0, 0.8, 1]}
-                      colors={["#333",""]}
-                      size={100}
-                    />
-                  </MeshDistortMaterial>
-                </mesh>
-                <Float speed={3} rotationIntensity={0} floatIntensity={3}>
-                  <PresentationControls
-                    config={{ mass: 2, tension: 500 }}
-                    snap={{ mass: 2, tension: 100 }}
-                    rotation={[0, 0.3, 0]}
-                    polar={[-Math.PI / 10, Math.PI / 10]}
-                    azimuth={[-Math.PI / 8, Math.PI / 8]}
-                  >
-                    <Plate
-                      rotation={[Math.PI / 4, 0, 0]}
-                      position={[-10, 0.65, 0]}
-                      scale={7.5}
-                      castShadow
-                    />
-                  </PresentationControls>
-                </Float>
-
-                <AnimatedText />
-              </>
-
-              <>
+              {/* Section 1 */}
               <mesh
-                  scale={[20, 5, 2]}
-                  position={[-1, -6.5, -2]}
-                  receiveShadow
-                  rotation={[0, 0, 0]}
-                >
-                  <planeGeometry args={[1, 1.5, 32, 32]} />
-                  <MeshDistortMaterial speed={0}>
-                    <GradientTexture
-                      stops={[0, 0.8, 1]}
-                      colors={["#333",""]}
-                      size={100}
-                    />
-                  </MeshDistortMaterial>
-                </mesh>
+                scale={[20, 5, 2]}
+                position={[-1, 1, -2]}
+                receiveShadow
+                rotation={[0, 0, 0]}
+              >
+                <planeGeometry args={[1, 1.5, 32, 32]} />
+                <meshBasicMaterial>
+                  <GradientTexture
+                    stops={[0.1, 0.85, 0.7, 0.8]}
+                    colors={['#282a2b', '#35393b', '#54595c', '#54595c']}
+                    size={100}
+                  />
+                </meshBasicMaterial>
+              </mesh>
+              <Marquee text={marqueeText} />
+              <Float speed={3} rotationIntensity={0} floatIntensity={3}>
+                <Suspense fallback={null}>
+                  {start && (
+                    <PresentationControls
+                      config={{ mass: 2, tension: 500 }}
+                      snap={{ mass: 2, tension: 100 }}
+                      rotation={[0, 0.3, 0]}
+                      polar={[-Math.PI / 10, Math.PI / 10]}
+                      azimuth={[-Math.PI / 8, Math.PI / 8]}
+                    >
+                      <Plate
+                        rotation={[Math.PI / 4, 0, 0]}
+                        position={[-10, 0.5, 0]}
+                        scale={7.5}
+                        castShadow
+                      />
+                    </PresentationControls>
+                  )}
+                </Suspense>
+              </Float>
+
+              <Suspense fallback={null}>
+                {start && <AnimatedText />}
+              </Suspense>
+
+              {/* Section 2 */}
+              <mesh
+                scale={[20, 5, 2]}
+                position={[-1, -6.5, -2.01]}
+                receiveShadow
+                rotation={[0, 0, 0]}
+              >
+                <planeGeometry args={[1, 1.5, 32, 32]} />
+                <meshBasicMaterial>
+                  <GradientTexture
+                    stops={[0, 0.2, 0.7, 0.8]}
+                    colors={['#282a2b', '#35393b', '#54595c', '#7a8285']}
+                    size={100}
+                  />
+                </meshBasicMaterial>
+              </mesh>
               <Float speed={2} rotationIntensity={0} floatIntensity={2}>
-              <LaptopAndMobile
-          laptopModelPath="/laptop.glb"
-          mobileModelPath="/phone.glb"
-        />
-        </Float>
-                <Text
-                  font="/font2.ttf"
-                  fontSize={0.18}
-                  color="white"
-                  anchorX="center"
-                  anchorY="middle"
-                  position={[-2.2, -6, -1]}>
-                    Your personalized diet assistant
-                  </Text>
-
-                  <Text
-                  font="/font2.ttf"
-                  fontSize={0.2}
-                  color="rgba(255, 255, 255, 0.14)"
-                  anchorX="center"
-                  anchorY="middle"
-                  position={[-2.8, -6.45, -1]}>
-                    {"Start Your Journey"}
-                  </Text>
-
-
-                  <Text
-                  font="/font2.ttf"
-                  fontSize={0.25}
-                  color="rgb(21, 255, 0)"
-                  anchorX="center"
-                  anchorY="middle"
-                  position={[-1.2, -6.45, -1]}>
-                    {"Today!!"}
-                  </Text>
-                  
-
-                <LoginAndSignup/>
-                
-                {/* <OrbitControls/> */}
-                
-                
-              </>
-
-              <>
-                <mesh
-                  scale={[20, 5, 2]}
-                  position={[-1, -8, -2]}
-                  receiveShadow
-                  rotation={[0, 0, 0]}
-                >
-                  {/* <planeGeometry args={[1, 1, 32, 32]} />
-                  <MeshDistortMaterial speed={0}>
-                    <GradientTexture
-                      stops={[0, 0.8, 1]}
-                      colors={['#e63946', '#f1faee', '#a8dadc']}
-                      size={100}
+                <Suspense fallback={null}>
+                  {start && (
+                    <LaptopAndMobile
+                      laptopModelPath="/laptop.glb"
+                      mobileModelPath="/phone.glb"
                     />
-                  </MeshDistortMaterial> */}
-                </mesh>
-              </>
+                  )}
+                </Suspense>
+              </Float>
+              <Text
+                font="/font2.ttf"
+                fontSize={0.18}
+                color="white"
+                anchorX="center"
+                anchorY="middle"
+                position={[-2.2, -5, -1]}
+              >
+                Your personalized diet assistant
+              </Text>
+              <Text
+                font="/font2.ttf"
+                fontSize={0.2}
+                color="rgba(255, 255, 255, 0.14)"
+                anchorX="center"
+                anchorY="middle"
+                position={[-2.8, -5.45, -1]}
+              >
+                Start Your Journey
+              </Text>
+              <Text
+                font="/font2.ttf"
+                fontSize={0.25}
+                color="rgb(21, 255, 0)"
+                anchorX="center"
+                anchorY="middle"
+                position={[-1.2, -5.45, -1]}
+              >
+                Today!!
+              </Text>
+              <LoginAndSignup />
+
+              {/* Section 3 */}
+              <mesh
+                scale={[10, 3, 1]}
+                position={[-1, -17.5, -1.99]}
+                receiveShadow
+                rotation={[0, 0, 0]}
+              >
+                <planeGeometry args={[2, 5.5, 10, 10]} />
+                <meshBasicMaterial>
+                  <GradientTexture
+                    stops={[0, 0.2, 0.7, 0.8]}
+                    colors={['#282a2b', '#35393b', '#54595c', '#54595c']}
+                    size={100}
+                  />
+                </meshBasicMaterial>
+              </mesh>
+              <Suspense fallback={null}>
+                {start && <AnimatedText2 />}
+              </Suspense>
+              <Animations />
+              <Features />
+              <Footer />
             </Scroll>
           </ScrollControls>
 
           <Environment preset="city" />
         </Canvas>
+        <LoadingScreen started={start} onStarted={handleStart} />
       </div>
     </>
   );

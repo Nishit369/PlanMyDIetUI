@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import React from "react";
 import { useGLTF, Html, Text} from "@react-three/drei";
 import FoodBowl from "./FoodBowl";
@@ -19,7 +20,7 @@ const LaptopAndMobile = ({ laptopModelPath, mobileModelPath}) => {
 
   return (
     <>
-      <group position={[1.4, -7.5, 0]} rotation={[0,0,0]}  >
+      <group position={[1.4, -6.75, 0]} rotation={[0,0,0]}  >
         <primitive object={laptopModel.scene} scale={0.1} />
         <Text
             font="/font2.ttf"
@@ -103,7 +104,7 @@ const LaptopAndMobile = ({ laptopModelPath, mobileModelPath}) => {
         
         
       </group>
-      <group position={[3.4, -7.5, -1]} scale={0.15}>
+      <group position={[3.4, -6.75, -1]} scale={0.15}>
         <primitive object={mobileModel.scene} />
         <mesh >
         {image !== '/food0.png' && <ImageMobile image={image} />}

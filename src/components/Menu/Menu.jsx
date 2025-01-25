@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { items } from './Menuitems';
-import './Menu.css';
 const Menu = ({ isOpen, onChange, menuOpen, menuChange }) => {
   const hoverSound = new Audio('/hover.mp3');
   const clickSound = new Audio('/click.mp3');
@@ -33,7 +32,7 @@ const Menu = ({ isOpen, onChange, menuOpen, menuChange }) => {
             onClick={handleClickSound}
             onMouseOver={handleHoverSound}
           >
-            <span className="material-icons" style={{ fontSize: '36px' }}>
+            <span className="material-icons" style={{ fontSize: '26px' }}>
               {item.icon}
             </span>
             {item.itemText}
