@@ -136,8 +136,8 @@ export default function App() {
                 <planeGeometry args={[1, 1.5, 32, 32]} />
                 <meshBasicMaterial>
                   <GradientTexture
-                    stops={[0.2, 0.4, 0.8, 1.0]}
-                    colors={['rgb(0, 0, 0)', 'rgb(31, 31, 31)', 'rgb(93, 93, 93)', 'rgb(136, 133, 133)']}
+                    stops={[0, 0.8,1]}
+                    colors={['rgb(9, 9, 9)', 'rgb(54, 53, 53)', 'rgb(93, 93, 93)', 'rgb(136, 133, 133)']}
                     size={100}
                   />
                 </meshBasicMaterial>
@@ -177,7 +177,7 @@ export default function App() {
                 <planeGeometry args={[1, 1.5, 32, 32]} />
                 <meshBasicMaterial>
                   <GradientTexture
-                    stops={[0, 0.2, 0.7, 0.8]}
+                    stops={[0, 0.7, 0.8]}
                     colors={['#282a2b', '#35393b', '#54595c', '#7a8285']}
                     size={100}
                   />
@@ -234,7 +234,7 @@ export default function App() {
                 <planeGeometry args={[2, 5.5, 10, 10]} />
                 <meshBasicMaterial>
                   <GradientTexture
-                    stops={[0, 0.2, 0.7, 0.8]}
+                    stops={[0.7, 0.8]}
                     colors={['#282a2b', '#35393b', '#54595c', '#54595c']}
                     size={100}
                   />

@@ -4,7 +4,7 @@ export const AnimatedText2 = () => {
 
     return (
         <Text
-            font="/font2.ttf"
+            font="/font4.ttf"
             fontSize={0.25}
             fontWeight={700}
             color="white"
