@@ -4,14 +4,13 @@ import React, { useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import gsap from 'gsap';
-import plateModel from '/plate.glb';
 import * as THREE from 'three';
+
+useGLTF.preload('/plate.glb');
 
 export default function Plate(props: any) {
   const plateRef = useRef<THREE.Object3D>(null);
-  const { scene } = useGLTF(plateModel);
-
-  useGLTF.preload(plateModel);
+  const { scene } = useGLTF('/plate.glb'); 
 
   useEffect(() => {
     if (plateRef.current) {

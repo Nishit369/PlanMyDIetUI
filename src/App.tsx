@@ -36,7 +36,7 @@ export default function App() {
   useEffect(() => {
     const audio = new Audio('/music.mp3');
     audio.volume = 0.3;
-    audio.preload = 'none'; 
+    audio.preload = 'auto';
     audioRef.current = audio;
   
     audio.addEventListener('error', (e) => {
