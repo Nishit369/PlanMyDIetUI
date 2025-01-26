@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
       return color1.clone().lerp(color2, factor);
     };
 
-    const colors = ["hsl(345, 97.50%, 53.70%)", "hsl(0, 100.00%, 49.80%)"];
+    const colors = ["hsla(345, 82.50%, 52.90%)", "hsl(340, 64.60%, 49.80%)"];
     const transitionDuration = 5000;
 
     useFrame(() => {
