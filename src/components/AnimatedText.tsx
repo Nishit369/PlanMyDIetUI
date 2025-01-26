@@ -26,8 +26,8 @@ export const AnimatedText: React.FC = () => {
     // Animate individual refs
     if (textRef2.current) {
       gsap.to(textRef2.current.position, {
-        x: 1.25,
-        y: 0.6,
+        x: 1.4,
+        y: 0.5,
         duration: 1.5,
         delay: 2,
       });
@@ -35,8 +35,8 @@ export const AnimatedText: React.FC = () => {
 
     if (textRef3.current) {
       gsap.to(textRef3.current.position, {
-        x: 1.1,
-        y: 0.2,
+        x: 1.17,
+        y: 0.1,
         duration: 1.5,
         delay: 3,
       });
@@ -44,8 +44,8 @@ export const AnimatedText: React.FC = () => {
 
     if (textRef4.current) {
       gsap.to(textRef4.current.position, {
-        x: 1.05,
-        y: -0.2,
+        x: 1.1,
+        y: -0.3,
         duration: 1.5,
         delay: 4,
       });
@@ -123,33 +123,36 @@ export const AnimatedText: React.FC = () => {
 
       <Text
         ref={textRef2}
-        font="/font2.ttf"
+        font="/font4.ttf"
         fontSize={0.2}
         color="white"
         anchorX="center"
         anchorY="middle"
         position={[500, 0.5, 1]}
+        letterSpacing={0.15}
       >
         {'Set goals, track meals,'}
       </Text>
       <Text
         ref={textRef3}
-        font="/font2.ttf"
+        font="/font4.ttf"
         fontSize={0.2}
         color="white"
         anchorX="center"
         anchorY="middle"
+        letterSpacing={0.15}
         position={[500, 0.25, 1]}
       >
         {'and let AI guide you'}
       </Text>
       <Text
         ref={textRef4}
-        font="/font2.ttf"
+        font="/font4.ttf"
         fontSize={0.2}
         color="white"
         anchorX="center"
         anchorY="middle"
+        letterSpacing={0.15}
         position={[500, 0, 1]}
       >
         {'to a healthier you.'}

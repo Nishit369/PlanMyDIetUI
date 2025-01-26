@@ -136,8 +136,8 @@ export default function App() {
                 <planeGeometry args={[1, 1.5, 32, 32]} />
                 <meshBasicMaterial>
                   <GradientTexture
-                    stops={[0.1, 0.85, 0.7, 0.8]}
-                    colors={['#282a2b', '#35393b', '#54595c', '#54595c']}
+                    stops={[0.2, 0.4, 0.8, 1.0]}
+                    colors={['rgb(0, 0, 0)', 'rgb(31, 31, 31)', 'rgb(93, 93, 93)', 'rgb(136, 133, 133)']}
                     size={100}
                   />
                 </meshBasicMaterial>
