@@ -11,7 +11,6 @@ export default function Plate(props: any) {
   const plateRef = useRef<THREE.Object3D>(null);
   const { scene } = useGLTF(plateModel);
 
-  // Preload the GLTF model
   useGLTF.preload(plateModel);
 
   useEffect(() => {
