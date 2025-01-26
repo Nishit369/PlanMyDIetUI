@@ -34,20 +34,20 @@ export default function App() {
   const clickSound = new Audio('/click.mp3');
 
   useEffect(() => {
-    audioRef.current = new Audio("/music.mp3");
-    audioRef.current.volume = 0.3;
-    audioRef.current.addEventListener('error', (e) => {
+    const audio = new Audio('/music.mp3');
+    audio.volume = 0.3;
+    audio.preload = 'none'; 
+    audioRef.current = audio;
+  
+    audio.addEventListener('error', (e) => {
       console.error('Error loading audio:', e);
     });
-
+  
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.removeEventListener('error', () => {});
-      }
+      audio.pause();
+      audio.removeEventListener('error', () => {});
     };
   }, []);
-
   const handleHoverSound = () => hoverSound.play();
   const handleClickSound = () => clickSound.play();
   const handleMenuToggle = () => setMenuOpen(!menuOpen);
