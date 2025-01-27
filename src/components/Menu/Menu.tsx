@@ -43,7 +43,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onChange, menuOpen, menuChange }) =
             onClick={handleClickSound}
             onMouseOver={handleHoverSound}
           >
-            <span className="material-icons" style={{ fontSize: '1.9rem' }}>
+            <span className="material-icons" style={{ fontSize: '2vw' }}>
               {item.icon}
             </span>
             {item.itemText}
