@@ -223,14 +223,14 @@ canvas {
 
 @font-face {
   font-family: 'Custom1';
-  src: url('./font3.ttf') format('truetype');
+  src: url('/font3.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Custom2';
-  src: url('./font4.ttf') format('truetype');
+  src: url('/font4.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
