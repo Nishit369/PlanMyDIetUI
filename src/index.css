@@ -332,13 +332,17 @@ canvas {
 
 @media (max-width: 768px) {
   .loadingScreen__board {
-    padding: 32px 10PX; 
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding: 32px 10px; 
     border-radius: 16px; 
     border: groove 0.3vw rgba(251, 19, 69, 0.75); 
 }
 }
 @media (max-width: 480px) {
   .loadingScreen__board {
+    margin-left: 10vw;
+    margin-right: 10vw;
     padding: 16px;
     border-radius: 12px; 
     border: groove 0.3vw rgba(251, 19, 69, 0.75); 
@@ -350,10 +354,13 @@ canvas {
     border-radius: 6px; 
     border: groove 0.3vw rgba(251, 19, 69, 0.75); 
   }
+  
 }
 
+
+
 .loadingScreen__title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: rgba(250, 246, 246, 0.683);
   margin: 0;
   margin-bottom: 48px;
