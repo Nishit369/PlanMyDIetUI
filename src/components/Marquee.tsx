@@ -1,6 +1,6 @@
 import { Text } from '@react-three/drei';
 import { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { Group, Mesh } from 'three';
 
 interface MarqueeProps {
@@ -12,6 +12,7 @@ interface MarqueeProps {
 
 const Marquee = ({ text, fontSize = 0.5, color = 'white', speed = 0.025 }: MarqueeProps) => {
   const textRef = useRef<Mesh>(null);
+  const {viewport} = useThree();
 
   useFrame(() => {
     if (textRef.current) {
@@ -30,13 +31,13 @@ const Marquee = ({ text, fontSize = 0.5, color = 'white', speed = 0.025 }: Marqu
       <Text
         ref={textRef}
         font="/font3.ttf"
-        fontSize={0.25}
+        fontSize={viewport.width/40}
         color={"#ababab"}
         maxWidth={100}
         lineHeight={1.5}
         anchorX="left"
         anchorY="middle"
-        position={[5, 0, 0]} // Initial position
+        position={[viewport.width, 0, 0]}
       >
         {text}
       </Text>

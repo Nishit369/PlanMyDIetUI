@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Text } from '@react-three/drei';
 import gsap from 'gsap';
 import { Mesh } from 'three';
+import { useThree } from 'react-three-fiber';
 
 export const AnimatedText: React.FC = () => {
   
@@ -9,6 +10,7 @@ export const AnimatedText: React.FC = () => {
   const textRef3 = useRef<Mesh | null>(null);
   const textRef4 = useRef<Mesh | null>(null);
   const textRefs = useRef<(Mesh | null)[]>([]);
+  const { viewport } = useThree();
 
   useEffect(() => {
   
@@ -16,7 +18,6 @@ export const AnimatedText: React.FC = () => {
       if (text) {
         gsap.to(text.position, {
           y: 1.1,
-          x: text.position.x -=0.25,
           duration: 1,
           delay: i * 0.2,
           ease: "power2.inOut",
@@ -27,7 +28,7 @@ export const AnimatedText: React.FC = () => {
   
     if (textRef2.current) {
       gsap.to(textRef2.current.position, {
-        x: 1.2,
+        x: viewport.width/6,
         y: 0.5,
         duration: 1.5,
         delay: 2,
@@ -36,7 +37,7 @@ export const AnimatedText: React.FC = () => {
 
     if (textRef3.current) {
       gsap.to(textRef3.current.position, {
-        x: 0.97,
+        x: viewport.width/7.2,
         y: 0.1,
         duration: 1.5,
         delay: 3,
@@ -45,7 +46,7 @@ export const AnimatedText: React.FC = () => {
 
     if (textRef4.current) {
       gsap.to(textRef4.current.position, {
-        x: 0.9,
+        x: viewport.width/7.5,
         y: -0.3,
         duration: 1.5,
         delay: 4,
@@ -58,66 +59,66 @@ export const AnimatedText: React.FC = () => {
       <Text
         ref={(el) => (textRefs.current[0] = el)}
         font="/font3.ttf"
-        fontSize={0.5}
+        fontSize={viewport.width/15}
         color={"#E11D48"}
         anchorX="center"
         anchorY="middle"
-        position={[0.1, 0, 1]}
+        position={[viewport.width/70, 0, 1]}
       >
         {"P"}
       </Text>
       <Text
         ref={(el) => (textRefs.current[1] = el)}
         font="/font3.ttf"
-        fontSize={0.5}
+        fontSize={viewport.width/15}
         color={"white"}
         anchorX="center"
         anchorY="middle"
-        position={[0.7, 0, 1]}
+        position={[viewport.width/10.5, 0, 1]}
       >
         {"lan"}
       </Text>
       <Text
         ref={(el) => (textRefs.current[2] = el)}
         font="/font3.ttf"
-        fontSize={0.5}
+        fontSize={viewport.width/15}
         color={"#E11D48"}
         anchorX="center"
         anchorY="middle"
-        position={[1.4, 0, 1]}
+        position={[viewport.width/5.5, 0, 1]}
       >
         {"M"}
       </Text>
       <Text
         ref={(el) => (textRefs.current[3] = el)}
         font="/font3.ttf"
-        fontSize={0.5}
+        fontSize={viewport.width/15}
         color={"white"}
         anchorX="center"
         anchorY="middle"
-        position={[1.8, 0, 1]}
+        position={[viewport.width/4.25, 0, 1]}
       >
         {"y"}
       </Text>
       <Text
         ref={(el) => (textRefs.current[4] = el)}
         font="/font3.ttf"
-        fontSize={0.5}
+        fontSize={viewport.width/15}
         color={"#E11D48"}
         anchorX="center"
         anchorY="middle"
-        position={[2.2, 0, 1]}
+        position={[viewport.width/3.5, 0, 1]}
       >
         {"D"}
       </Text>
       <Text
         ref={(el) => (textRefs.current[5] = el)}
         font="/font3.ttf"
-        fontSize={0.5}
+        fontSize={viewport.width/15}
         color={"white"}
         anchorX="center"
         anchorY="middle"
-        position={[2.75, 0, 1]}
+        position={[viewport.width/2.8, 0, 1]}
       >
         {"iet"}
       </Text>
@@ -125,7 +126,7 @@ export const AnimatedText: React.FC = () => {
       <Text
         ref={textRef2}
         font="/font4.ttf"
-        fontSize={0.2}
+        fontSize={viewport.width/40}
         color="white"
         anchorX="center"
         anchorY="middle"
@@ -137,7 +138,7 @@ export const AnimatedText: React.FC = () => {
       <Text
         ref={textRef3}
         font="/font4.ttf"
-        fontSize={0.2}
+        fontSize={viewport.width/40}
         color="white"
         anchorX="center"
         anchorY="middle"
@@ -149,7 +150,7 @@ export const AnimatedText: React.FC = () => {
       <Text
         ref={textRef4}
         font="/font4.ttf"
-        fontSize={0.2}
+        fontSize={viewport.width/40}
         color="white"
         anchorX="center"
         anchorY="middle"

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { Canvas } from '@react-three/fiber';
+import { Canvas} from '@react-three/fiber';
 import {
   PresentationControls,
   ScrollControls,
@@ -28,7 +28,6 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [start, setStart] = useState(false);
-  const [audioPlaying, setAudioPlaying] = useState(false);
   const hoverSound = new Audio('/hover.mp3');
   const clickSound = new Audio('/click.mp3');
 
@@ -123,7 +122,6 @@ export default function App() {
                       <Plate
                         rotation={[Math.PI / 4, 0, 0]}
                         position={[-10, 0.5, 0]}
-                        scale={7.5}
                         castShadow
                       />
                     </PresentationControls>

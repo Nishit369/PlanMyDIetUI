@@ -1,21 +1,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import React, { useEffect, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import gsap from 'gsap';
 import * as THREE from 'three';
+
 
 useGLTF.preload('/plate.glb');
 
 export default function Plate(props: any) {
   const plateRef = useRef<THREE.Object3D>(null);
   const { scene } = useGLTF('/plate.glb'); 
+  const { viewport } = useThree();
 
   useEffect(() => {
     if (plateRef.current) {
       gsap.to(plateRef.current.position, {
-        x: -1.9,
+        x: -viewport.width/4,
         duration: 5,
         ease: 'power4.inOut',
       });
@@ -34,5 +36,5 @@ export default function Plate(props: any) {
     }
   });
 
-  return <primitive ref={plateRef} object={scene} {...props} />;
+  return <primitive ref={plateRef} scale={viewport.width/0.975} object={scene} {...props} />;
 }
