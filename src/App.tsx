@@ -29,48 +29,16 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [start, setStart] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const hoverSound = new Audio('/hover.mp3');
   const clickSound = new Audio('/click.mp3');
 
-  useEffect(() => {
-    const audio = new Audio('/music.mp3');
-    audio.volume = 0.3;
-    audio.preload = 'auto';
-    audioRef.current = audio;
-  
-    audio.addEventListener('error', (e) => {
-      console.error('Error loading audio:', e);
-    });
-  
-    return () => {
-      audio.pause();
-      audio.removeEventListener('error', () => {});
-    };
-  }, []);
   const handleHoverSound = () => hoverSound.play();
   const handleClickSound = () => clickSound.play();
   const handleMenuToggle = () => setMenuOpen(!menuOpen);
 
-  const handleAudioToggle = () => {
-    if (audioPlaying) {
-      audioRef.current?.pause();
-    } else {
-      audioRef.current?.play().catch((error) => {
-        console.error('Error playing audio:', error);
-      });
-    }
-    setAudioPlaying(!audioPlaying);
-  };
 
   const handleStart = () => {
     setStart(true);
-    if (!audioPlaying) {
-      audioRef.current?.play().catch((error) => {
-        console.error('Error playing audio:', error);
-      });
-      setAudioPlaying(true);
-    }
   };
 
   const marqueeText =
@@ -78,8 +46,10 @@ export default function App() {
 
   return (
     <>
-      <div className="logo-container">
+      <div className='logo-container'>
+      <a href="https://www.google.com" >
         <img src="/logo.png" alt="logo" className="logo" />
+      </a>
       </div>
 
       <span
@@ -93,9 +63,6 @@ export default function App() {
         style={{ visibility: menuOpen ? 'hidden' : 'visible' }}
       >
         menu
-      </span>
-      <span className="material-icons sound-btn" onClick={handleAudioToggle}>
-        {audioPlaying ? 'volume_up' : 'volume_off'}
       </span>
 
       <Menu
@@ -249,7 +216,7 @@ export default function App() {
             </Scroll>
           </ScrollControls>
           {/* <OrbitControls/> */}
-          <Environment preset="city" />
+          {/* <Environment preset="city" /> */}
         </Canvas>
         <LoadingScreen started={start} onStarted={handleStart} />
         

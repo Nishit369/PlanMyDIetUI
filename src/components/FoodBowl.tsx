@@ -17,8 +17,8 @@ const FoodBowl = ({ position, image, calories, name, onHover }: FoodBowlProps) =
   const [currentY, setCurrentY] = useState(position[1]);
 
   useFrame(() => {
-    const targetY = hovered ? position[1] + 0.2 : position[1];
-    setCurrentY((prevY) => prevY + (targetY - prevY) * 0.1);
+    const targetY = hovered ? position[1] + 0.15 : position[1];
+    setCurrentY((prevY) => prevY + (targetY - prevY - 0.1) * 0.1);
   });
 
   return (

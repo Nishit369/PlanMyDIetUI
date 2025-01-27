@@ -44,12 +44,14 @@ canvas {
 
 .menu-btn {
 
-  color: white;
-  cursor: pointer;
   position: fixed;
   right: 1.3vw;
   top: 2vh;
   z-index: 10;
+  font-size:45px;
+  color: white;
+  cursor: pointer;
+
 }
 .sound-btn {
 
@@ -72,12 +74,7 @@ canvas {
   z-index: 2;
 }
 
-.menu-btn {
-  font-size: 48px;
-  color: white;
-  cursor: pointer;
 
-}
 
 .Menu > .Menu-items {
   background-color: inherit;
@@ -149,33 +146,6 @@ canvas {
   transform: scale(1, 0);
 }
 .menu-btn::before {
-  border-top: 1px solid rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(255, 255, 255);
-  transform: scale(0, 1);
-}
-.sound-btn:hover::after,
-.sound-btn:hover::before {
-  transform: scale(1, 1);
-}
-
-.sound-btn::after,
-.sound-btn::before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  bottom: 2px;
-  left: 2px;
-  transition: all 0.5s;
-}
-
-.sound-btn::after {
-  border-right: 1px solid rgb(255, 255, 255);
-  border-left: 1px solid rgb(255, 255, 255);
-  transform: scale(1, 0);
-}
-
-.sound-btn::before {
   border-top: 1px solid rgb(255, 255, 255);
   border-bottom: 1px solid rgb(255, 255, 255);
   transform: scale(0, 1);
@@ -321,22 +291,23 @@ canvas {
     font-size: 1.2rem;
   }
 }
-
-.logo-container {
+.logo-container{
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
   position: fixed;
-  top: -2.5vh;
-  left: -2.5vw;
-  z-index: 9999;
-
+  z-index: 999;
+  top: 0vh;
+  left: 0vw;
+  padding: 1.5vh 1vw;
 }
 
 .logo {
-  transform: translate(0,0);
-  position: fixed;
   cursor: pointer;
-  width: 10vw;
+  max-width: 45px;
   height: auto;
-  z-index: 99999;
+  z-index: 2;
 }
 
 
@@ -357,22 +328,44 @@ canvas {
 }
 
 .loadingScreen__board {
-  padding: 64px;
+  padding: 5vh 5vw;
   background-color: rgb(30, 30, 30);
   border-radius: 24px;
   text-align: center;
-  border: groove 6px rgba(251, 19, 69, 0.75);
+  border: groove 0.3vw rgba(251, 19, 69, 0.75);
   transition: opacity 1s;
 }
 
+@media (max-width: 768px) {
+  .loadingScreen__board {
+    padding: 32px 10PX; 
+    border-radius: 16px; 
+    border: groove 0.3vw rgba(251, 19, 69, 0.75); 
+}
+}
+@media (max-width: 480px) {
+  .loadingScreen__board {
+    padding: 16px;
+    border-radius: 12px; 
+    border: groove 0.3vw rgba(251, 19, 69, 0.75); 
+  }
+}
+@media (max-width: 320px) {
+  .loadingScreen__board {
+    padding: 8px;
+    border-radius: 6px; 
+    border: groove 0.3vw rgba(251, 19, 69, 0.75); 
+  }
+}
+
 .loadingScreen__title {
-  font-size: 4rem;
+  font-size: 3rem;
   color: rgba(250, 246, 246, 0.683);
   margin: 0;
   margin-bottom: 48px;
 }
 .loadingScreen__description {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: rgba(250, 246, 246, 0.683);
   font-family: "Custom2";
   margin: 0;
@@ -380,12 +373,12 @@ canvas {
 }
 
 .loadingScreen__button {
-  padding: 15px 32px;
+  padding: 2vh 3vw;
   background-color: rgba(255, 87, 87, 0.303);
   color: rgb(176, 168, 168);
   border: none;
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   border-radius: 8px;
   transition: background-color 0.4s;
   font-family: "Custom1";
