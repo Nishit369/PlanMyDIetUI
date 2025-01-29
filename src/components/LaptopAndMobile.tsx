@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useGLTF, Html, Text } from "@react-three/drei";
 import FoodBowl from "./FoodBowl";
 import ImageMobile from "./ImageMobile";
+import {useThree} from "@react-three/fiber";
 
 interface LaptopAndMobileProps {
   laptopModelPath: string;
@@ -15,6 +16,8 @@ const LaptopAndMobile = ({ laptopModelPath, mobileModelPath }: LaptopAndMobilePr
   const [calories, setCalories] = useState<string>('0 Cal');
   const [name, setName] = useState<string>('food');
   const [image, setImage] = useState<string>('/food0.png');
+  const {viewport} = useThree();
+  const yFactor = viewport.height * 0.5;
 
   const handleHover = (calories: string, name: string, image: string) => {
     setCalories(calories);
@@ -24,7 +27,7 @@ const LaptopAndMobile = ({ laptopModelPath, mobileModelPath }: LaptopAndMobilePr
 
   return (
     <>
-      <group position={[1.4, -6.75, 0]} rotation={[0, 0, 0]}>
+      <group position={[viewport.width/5.6, -(yFactor*2.8), 0]} rotation={[0, 0, 0]} scale={viewport.width/7}>
         <primitive object={laptopModel.scene} scale={0.1} />
         <Text
           font="/font2.ttf"
@@ -111,7 +114,7 @@ const LaptopAndMobile = ({ laptopModelPath, mobileModelPath }: LaptopAndMobilePr
           onHover={handleHover}
         />
       </group>
-      <group position={[3.4, -6.75, -1]} scale={0.15}>
+      <group position={[viewport.width/2.37, -(yFactor*2.8*0.98), 0]} scale={viewport.width/50}>
         <primitive object={mobileModel.scene} />
         <mesh>
           {image !== '/food0.png' && <ImageMobile image={image} />}

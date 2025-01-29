@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import { Text, MeshReflectorMaterial } from '@react-three/drei';
 import * as THREE from 'three';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 
 const Footer: React.FC = () => {
   function Letters() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [gradientColor, setGradientColor] = useState(new THREE.Color(""));
     const [startTime, setStartTime] = useState<number>(Date.now());
+    const {viewport} = useThree();
 
     const interpolateColor = (color1: THREE.Color, color2: THREE.Color, factor: number) => {
       return color1.clone().lerp(color2, factor);
@@ -31,16 +32,16 @@ const Footer: React.FC = () => {
     });
 
     const letters = [
-      { char: "P", position: [-3.2, -25.25, 0] },
-      { char: "L", position: [-2.5, -25.25, 0] },
-      { char: "A", position: [-1.8, -25.25, 0] },
-      { char: "N", position: [-1, -25.25, 0] },
-      { char: "M", position: [-0.175, -25.25, 0] },
-      { char: "Y", position: [0.6, -25.25, 0] },
-      { char: "D", position: [1.3, -25.25, 0] },
-      { char: "I", position: [1.9, -25.25, 0] },
-      { char: "E", position: [2.5, -25.25, 0] },
-      { char: "T", position: [3.2, -25.25, 0] },
+      { char: "P", position: [-viewport.width/2.3, -25.25, 0] },
+      { char: "L", position: [-viewport.width/2.95, -25.25, 0] },
+      { char: "A", position: [-viewport.width/4.15, -25.25, 0] },
+      { char: "N", position: [-viewport.width/6.9, -25.25, 0] },
+      { char: "M", position: [-viewport.width/27, -25.25, 0] },
+      { char: "Y", position: [viewport.width/15, -25.25, 0] },
+      { char: "D", position: [viewport.width/6, -25.25, 0] },
+      { char: "I", position: [viewport.width/4.05, -25.25, 0] },
+      { char: "E", position: [viewport.width/3, -25.25, 0] },
+      { char: "T", position: [viewport.width/2.35, -25.25, 0] },
     ];
 
     return (
@@ -49,7 +50,7 @@ const Footer: React.FC = () => {
           <Text
             key={index}
             font="/font3.ttf"
-            fontSize={1}
+            fontSize={viewport.width/7.5}
             color={gradientColor.getStyle()}
             position={[
               letter.position[0],

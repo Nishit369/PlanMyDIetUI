@@ -11,14 +11,14 @@ import { useThree } from '@react-three/fiber';
 import { Html } from "@react-three/drei";
 
 const Animations: React.FC = () => {
-    const { gl } = useThree();
+    const { gl,viewport } = useThree();
 
     return (
         <>
             <Html 
                 transform 
                 portal={{ current: gl.domElement.parentNode }} 
-                position={[-2, -11.25, -1.4]} 
+                position={[-viewport.width/3, -11.25, -1.4]} 
                 style={{ pointerEvents: 'none' }}
             >
                 <div className='anim1' style={{ pointerEvents: 'none' }}>
@@ -29,7 +29,7 @@ const Animations: React.FC = () => {
             <Html 
                 transform 
                 portal={{ current: gl.domElement.parentNode }} 
-                position={[-2, -20.2, -1.4]} 
+                position={[-viewport.width/3.5, -20.2, -1.4]} 
                 style={{ pointerEvents: 'none' }}
             >
                 <div className='anim2' style={{ pointerEvents: 'none' }}>
@@ -40,7 +40,7 @@ const Animations: React.FC = () => {
             <Html 
                 transform 
                 portal={{ current: gl.domElement.parentNode }} 
-                position={[2, -22.5, -1.4]} 
+                position={[viewport.width/3.5, -22.5, -1.4]} 
                 style={{ pointerEvents: 'none' }}
             >
                 <div className='anim3' style={{ pointerEvents: 'none' }}>
@@ -51,7 +51,7 @@ const Animations: React.FC = () => {
             <Html 
                 transform 
                 portal={{ current: gl.domElement.parentNode }} 
-                position={[2, -13.4, -1.4]} 
+                position={[viewport.width/3.5, -13.4, -1.4]} 
                 style={{ pointerEvents: 'none' }}
             >
                 <div className='anim4' style={{ pointerEvents: 'none' }}>
@@ -62,7 +62,7 @@ const Animations: React.FC = () => {
             <Html 
                 transform 
                 portal={{ current: gl.domElement.parentNode }} 
-                position={[-2, -15.55, -1.4]} 
+                position={[-viewport.width/3.5, -15.55, -1.4]} 
                 style={{ pointerEvents: 'none' }}
             >
                 <div className='anim5' style={{ pointerEvents: 'none' }}>
@@ -73,7 +73,7 @@ const Animations: React.FC = () => {
             <Html 
                 transform 
                 portal={{ current: gl.domElement.parentNode }} 
-                position={[2, -17.55, -1.4]} 
+                position={[viewport.width/3.5, -17.55, -1.4]} 
                 style={{ pointerEvents: 'none' }}
             >
                 <div className='anim6' style={{ pointerEvents: 'none' }}>

@@ -23,6 +23,7 @@ import Footer from './components/Footer';
 import Marquee from './components/Marquee';
 import { Suspense } from 'react';
 import { LoadingScreen } from './components/LoadingScreen';
+import Page2 from './components/Page2';
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -158,36 +159,7 @@ export default function App() {
                   )}
                 </Suspense>
               </Float>
-              <Text
-                font="/font2.ttf"
-                fontSize={0.18}
-                color="white"
-                anchorX="center"
-                anchorY="middle"
-                position={[-2.2, -5, -1]}
-              >
-                Your personalized diet assistant
-              </Text>
-              <Text
-                font="/font2.ttf"
-                fontSize={0.2}
-                color="rgba(255, 255, 255, 0.14)"
-                anchorX="center"
-                anchorY="middle"
-                position={[-2.8, -5.45, -1]}
-              >
-                Start Your Journey
-              </Text>
-              <Text
-                font="/font2.ttf"
-                fontSize={0.25}
-                color="rgb(21, 255, 0)"
-                anchorX="center"
-                anchorY="middle"
-                position={[-1.2, -5.45, -1]}
-              >
-                Today!!
-              </Text>
+              <Page2/>
               <LoginAndSignup />
 
               <mesh
